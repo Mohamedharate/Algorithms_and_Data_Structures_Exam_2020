@@ -101,6 +101,7 @@ public class EksamenSBinTre<T> {
         else q.høyre = p;
 
 
+
         antall++;
         return true;
     }
@@ -114,7 +115,11 @@ public class EksamenSBinTre<T> {
     }
 
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+
+
+
+
     }
 
     public void nullstill() {
