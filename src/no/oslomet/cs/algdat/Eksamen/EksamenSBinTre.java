@@ -168,20 +168,15 @@ public class EksamenSBinTre<T> {
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
 
-
         //p er eneste noden i treet. (er rot)
 
         //p har venstre barn
 
-
         //p har ikke venstre barn, men har høyre barn
-
 
         //p har ingen barn
 
-
         //Hvis p har ingen barn skal p være den første i postorden
-
 
         Node<T> node = p.venstre;
         Node<T> q = p;
@@ -190,9 +185,6 @@ public class EksamenSBinTre<T> {
                 node = node.venstre;
                 q = p.venstre;
             }
-
-
-            System.out.println(" Venstre er ikke null");
             return q;
         }
         else if (p.høyre != null){
@@ -201,33 +193,21 @@ public class EksamenSBinTre<T> {
                 node = node.venstre;
                 q = p.høyre.venstre;
             }
-
-            System.out.println("Venstre er null, høyre er ikke");
             return q;
-
         }
         else {
-            System.out.println("Begge er null");
             return p;
         }
-    }
-
-    public void toStringFørstePostOrden(){
-
-        Node<T> p = førstePostorden(rot); // går til den første i postorden
-
-        System.out.println(p.verdi + " ");
-
     }
 
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
 
-
-        Node<T> node = førstePostorden(p);
-        if (førstePostorden(node).venstre != null && førstePostorden(node).høyre != null)
-            return førstePostorden(node);
-
+        if (p.venstre == null && p.høyre == null){
+            System.out.println("d");
+            return p.forelder;
+        }
+        System.out.println("F");
         return null;
 
     }

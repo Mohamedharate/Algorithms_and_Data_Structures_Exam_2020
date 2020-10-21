@@ -26,7 +26,7 @@ public class Main {
         for (int verdi : a)tre.leggInn(verdi);
 
 
-        tre.toStringFørstePostOrden();
+
 
 
 
