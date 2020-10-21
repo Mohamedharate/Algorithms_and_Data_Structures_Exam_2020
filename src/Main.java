@@ -19,14 +19,14 @@ public class Main {
          */
 
 
-        Integer[] a = {20,3,9,10,4,34,21,29,7,12,17,2,10,23};
+        Character[] a = {10,15,20,11};
 
         EksamenSBinTre<Integer> tre = new EksamenSBinTre<>(Comparator.naturalOrder());
 
         for (int verdi : a)tre.leggInn(verdi);
 
 
-        System.out.println(tre.toStringPostOrder());
+        tre.toStringFørstePostOrden();
 
 
 
