@@ -1,6 +1,7 @@
 package no.oslomet.cs.algdat.Eksamen;
 
 
+import javax.swing.tree.TreeNode;
 import java.util.*;
 
 public class EksamenSBinTre<T> {
@@ -240,12 +241,34 @@ public class EksamenSBinTre<T> {
 
     public ArrayList<T> serialize() {
 
+        ArrayList<T> array = new ArrayList<T>(); // Arrayet som skal returneres
 
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Queue<Node> ko = new LinkedList<>(); //Køen som brukes for å lagere verdiene midlertidig før vi overfører de til array
+
+        ko.add(rot); //Roten skal være første verdien i nivåorden
+
+        while(!ko.isEmpty()) {//sjekker om kø er tom, hvis ja returnerer vi array
+
+            Node<T> tmp = ko.poll(); //her lagerer vi noden som er øverst i køen midlertidig og så fjerner vi det fra køen
+
+            array.add(tmp.verdi); //Her legges øverste verdien i array
+            if(tmp.venstre!=null)//I nivåorden skal venstre veriden komme før høyre
+                ko.add(tmp.venstre);
+            if(tmp.høyre!=null)
+                ko.add(tmp.høyre);
+        }
+        return array;
     }
 
     static <K> EksamenSBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        EksamenSBinTre<K> tre = new EksamenSBinTre<>(c);
+
+        for (K d : data) {
+            tre.leggInn(d);
+        }
+
+        return tre;
     }
 
 

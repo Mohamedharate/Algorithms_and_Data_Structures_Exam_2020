@@ -1,9 +1,11 @@
 import no.oslomet.cs.algdat.Eksamen.EksamenSBinTre;
 import no.oslomet.cs.algdat.Eksamen.Oppgave;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Main {
@@ -22,6 +24,7 @@ public class Main {
         System.out.println(tre.antall());
          */
 
+        /*
 
         int[] a = {10, 6, 14, 1, 8, 12, 3, 7, 9, 11, 13, 2, 5, 4};
 
@@ -37,6 +40,24 @@ public class Main {
         postorden.set("");
         tre.postordenRecursive(oppgave);
         assertEquals(postorden.get(), " 2 4 5 3 1 7 9 8 6 11 13 12 14 10");
+
+         */
+
+        EksamenSBinTre<Integer> tre =
+                new EksamenSBinTre<>(Comparator.naturalOrder());
+
+        int[] a = {10, 14, 6, 8, 1, 12, 7, 3, 11, 9, 13, 5, 2, 4};
+        for (int verdi : a) tre.leggInn(verdi);
+
+        ArrayList<Integer> data = tre.serialize();
+
+        Integer[] truth = {10, 6, 14, 1, 8, 12, 3, 7, 9, 11, 13, 2, 5, 4};
+        assertArrayEquals(data.toArray(), truth);
+
+
+
+        for (int i : data)
+            System.out.print(i + " ");
 
 
 
