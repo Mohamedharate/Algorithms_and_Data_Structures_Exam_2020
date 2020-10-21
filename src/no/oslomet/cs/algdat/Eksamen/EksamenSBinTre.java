@@ -203,12 +203,20 @@ public class EksamenSBinTre<T> {
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
 
-        if (p.venstre == null && p.høyre == null){
+        if (p.forelder == null)
+            return null;
+
+        if (p.forelder.høyre == null || p.forelder.høyre == p){
             System.out.println("d");
             return p.forelder;
         }
-        System.out.println("F");
-        return null;
+
+        Node<T> current = p;
+        while (current.venstre != null){
+            current = current.venstre;
+        }
+        System.out.println("f");
+        return current;
 
     }
 
