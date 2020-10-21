@@ -168,16 +168,6 @@ public class EksamenSBinTre<T> {
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
 
-        //p er eneste noden i treet. (er rot)
-
-        //p har venstre barn
-
-        //p har ikke venstre barn, men har høyre barn
-
-        //p har ingen barn
-
-        //Hvis p har ingen barn skal p være den første i postorden
-
         Node<T> node = p.venstre;
         Node<T> q = p;
         if (p.venstre != null){
@@ -206,17 +196,15 @@ public class EksamenSBinTre<T> {
         if (p.forelder == null)
             return null;
 
-        if (p.forelder.høyre == null || p.forelder.høyre == p){
-            System.out.println("d");
+        if (p.forelder.høyre == p){
             return p.forelder;
         }
-
-        Node<T> current = p;
-        while (current.venstre != null){
-            current = current.venstre;
+        else if (p.forelder.høyre != null){
+            return førstePostorden(p.forelder.høyre);
         }
-        System.out.println("f");
-        return current;
+        else {
+            return p.forelder;
+        }
 
     }
 
