@@ -219,7 +219,6 @@ public class EksamenSBinTre<T> {
 
     public void postorden(Oppgave<? super T> oppgave) {
 
-
         Node<T> p = førstePostorden(rot);
         while (p != null){
             oppgave.utførOppgave(p.verdi);
@@ -234,12 +233,9 @@ public class EksamenSBinTre<T> {
 
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
 
-
-
-
-        if (p.venstre != null)postordenRecursive(p.venstre, oppgave);
-        if (p.høyre != null)postordenRecursive(p.høyre,oppgave);
-        oppgave.utførOppgave(p.verdi);
+        if (p.venstre != null)postordenRecursive(p.venstre, oppgave);//til venstre barn
+        if (p.høyre != null)postordenRecursive(p.høyre,oppgave);//til høyre barn
+        oppgave.utførOppgave(p.verdi);//utfør oppgaven
     }
 
     public ArrayList<T> serialize() {
