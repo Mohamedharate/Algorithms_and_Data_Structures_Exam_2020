@@ -19,11 +19,13 @@ public class Main {
          */
 
 
-        Character[] a = {10,15,20,11};
+        int[] a = {10,10,10,10};
 
         EksamenSBinTre<Integer> tre = new EksamenSBinTre<>(Comparator.naturalOrder());
 
         for (int verdi : a)tre.leggInn(verdi);
+
+
 
 
 

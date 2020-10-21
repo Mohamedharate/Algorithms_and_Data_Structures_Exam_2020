@@ -168,47 +168,58 @@ public class EksamenSBinTre<T> {
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
 
-        Node<T> node = p.venstre;
-        Node<T> q = p;
-        if (p.venstre != null){
-            while (node != null){
-                node = node.venstre;
-                q = p.venstre;
-            }
-            return q;
-        }
-        else if (p.høyre != null){
-            node = p.høyre.venstre;
-            while (node != null){
-                node = node.venstre;
-                q = p.høyre.venstre;
-            }
-            return q;
-        }
-        else {
+        if (p.venstre == null && p.høyre == null){
             return p;
         }
-    }
+        Node<T> current = p;
 
+        if (p.venstre != null) {
+            while (current.venstre != null) {
+                current = current.venstre;
+            }
+        }
+        if (current.høyre != null) {
+            current = current.høyre;
+            if (current.venstre != null){
+                while (current.venstre != null) {
+                    current = current.venstre;
+                }
+            }
+            else{
+                while (current.høyre != null){
+                    current = current.høyre;
+                }
+                return current;
+            }
+        }
+
+        return current;
+    }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
 
         if (p.forelder == null)
             return null;
 
-        if (p.forelder.høyre == p){
+        if (p.forelder.høyre == p){//Hvis p er et høyre barn, p.forelder være neste verdi i postorden
             return p.forelder;
         }
-        else if (p.forelder.høyre != null){
+        else if (p.forelder.høyre != null){//Hvis p er venstre barn, kjører vi førstePostorden for å finne første noden
             return førstePostorden(p.forelder.høyre);
         }
         else {
-            return p.forelder;
+            return p.forelder;//p.forelder har ikke høyre barn, dvs neste verdi i postorder blir p.forelder
         }
 
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
+
+        Node<T> p = førstePostorden(rot);
+        while (p != null){
+            p = nestePostorden(p);
+        }
+
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
@@ -217,7 +228,12 @@ public class EksamenSBinTre<T> {
     }
 
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if(p == null)
+            return;
+
+        postordenRecursive(p.venstre, oppgave);
+        postordenRecursive(p.høyre,oppgave);
+
     }
 
     public ArrayList<T> serialize() {
