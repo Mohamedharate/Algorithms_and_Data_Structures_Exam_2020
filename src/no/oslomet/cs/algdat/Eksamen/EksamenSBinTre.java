@@ -146,18 +146,19 @@ public class EksamenSBinTre<T> {
         int teller = 0;
         if (verdi == null) return teller;
 
-        Node<T> p = rot;
 
-        while (p != null) {
-            int cmp = comp.compare(verdi, p.verdi);
+        Node<T> current = rot;
+
+        while (current != null) {
+            int cmp = comp.compare(verdi, current.verdi);
             if (cmp==0){
                 teller++;
-                p = p.høyre;
+                current = current.høyre;
             }
             else if (cmp < 0){
-                p = p.venstre;
+                current = current.venstre;
             }
-            else  p = p.høyre;
+            else  current = current.høyre;
         }
         return teller;
     }
@@ -167,21 +168,68 @@ public class EksamenSBinTre<T> {
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
 
-        if (p.forelder == null) return null; //roten er den siste verdien i postorden
 
-        if (p.forelder.høyre == null || p.forelder.høyre == p)return p.forelder;
+        //p er eneste noden i treet. (er rot)
+        if (p.forelder == null) return p;
 
-        Node<T> current = p.forelder.høyre;
-        while (current.venstre != null)
-            current = current.venstre;
+        //p har venstre barn
+        Node<T> current = p.venstre;
+        if (current != null) {
+            while (current != null) {
+                current = current.venstre;
+            }
+            return current;
+        }
 
-        return current;
+        //p har ikke venstre barn, men har høyre barn
+        if (p.venstre == null && p.forelder.høyre != null) {
+            current = p.forelder.høyre;
+            while (current.venstre != null) {
+                current = current.venstre;
+                return current;
+            }
+        }
+
+
+        //p har ingen barn
+
+
+
+         else
+        } else if (p.forelder.høyre == null && p.forelder.høyre == p) {
+            return p.forelder;
+        }
+        return p;
     }
+
+
+        /*
+
+        //Hvis p er roten og p har ingen barn skal p være den første i postorden
+        if (p.forelder == null && p.venstre == null && p.høyre == null)
+            return p;
+
+        // Hvis p ikke har søsken, dvs at p har kun ett barn, så skal p.forelder være
+        if (p.forelder.høyre == null || p.forelder.høyre == p) return p.forelder;
+
+        //Hvis p har høyre søsken, og høyre har venstre barn skal vi finne nederste venstre barnet i treet.
+        Node<T> current = p.forelder.høyre;
+        while (current.venstre != null) {
+            current = current.venstre;
+            return current;
+        }
+        return p;
+
+         */
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
 
+
         Node<T> node = førstePostorden(p);
-        return førstePostorden(node);
+        if (førstePostorden(node).venstre != null && førstePostorden(node).høyre != null)
+            return førstePostorden(node);
+
+        return null;
 
     }
 

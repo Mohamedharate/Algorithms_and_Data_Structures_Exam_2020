@@ -19,14 +19,14 @@ public class Main {
          */
 
 
-        Integer[] a = {1,9, 7,9, 1, 6, 1, 5, 1, 4, 1, 1, 1, 3,9,9};
+        Integer[] a = {20,3,9,10,4,34,21,29,7,12,17,2,10,23};
 
-       // Integer[] a = {10,11,5,10,6,1,0,2,10,12,13,10};
         EksamenSBinTre<Integer> tre = new EksamenSBinTre<>(Comparator.naturalOrder());
 
         for (int verdi : a)tre.leggInn(verdi);
 
-        System.out.println(tre.inneholder(9));
+
+        System.out.println(tre.toStringPostOrder());
 
 
 
