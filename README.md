@@ -63,7 +63,17 @@ av foreach og leggInn()-metoden.
 
 * Oppgave 6:
 - I metoden fjen() kopierte jeg koden fra kompandiet, men endret referansene til forelder og passet på at kode
-ikke gir nullpointer.. Det første koden gjør er at 
+ikke gir nullpointer.. Det første koden gjør er at den sjekker om verdi er lik null, hvis den er det returner false siden 
+treet ikke inneholder null-verdier. Deretter går den gjennom treets noder og sammenligner verdiene og verdien som
+skal fjernes. Hvis den ikke finner verdien returnerer den false. Videre sjekker vi for de forskjellige tilfellene vi kan ha
+når vi skal fjerne en node. 
+Tilfellene er at noden som skal fjernes har:
+        1) ingen barn
+        2) kun ett barn
+        3) to barn
+
+       
+ 
 
 - fjenAlle() her brukte jeg metodene antall(T verdi) og fjen(). kjørte en for-løkke som skulle kjøre fjern 
 så mange ganger som den er i treet. 
