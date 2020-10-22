@@ -134,43 +134,50 @@ public class EksamenSBinTre<T> {
 
     public boolean fjern(T verdi) {
 
-            if (verdi == null) return false;  // Ingen nullverdier i treet
+        //Hvis verdi er lik null, returner false
+        //finne verdien
+        //Noden har kun ett barn
+        //Noden har to barn
+        //Noden finnes ikke i treet, returner false
 
-            Node<T> p = rot, q = rot.forelder;   // q skal være forelder til p
 
-            while (p != null)            // leter etter verdi
+        if (verdi == null) return false;  // treet har ingen nullverdier
+
+        Node<T> p = rot, q = null;   // q skal være forelder til p
+
+        while (p != null)            // leter etter verdi
+        {
+            int cmp = comp.compare(verdi,p.verdi);      // sammenligner
+            if (cmp < 0) { q = p; p = p.venstre; }      // går til venstre
+            else if (cmp > 0) { q = p; p = p.høyre; }   // går til høyre
+            else break;    // den søkte verdien ligger i p
+        }
+        if (p == null) return false;   // finner ikke verdi
+
+        if (p.venstre == null || p.høyre == null)  // Tilfelle 1) og 2)
+        {
+            Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
+            if (p == rot) rot = b;
+            else if (p == q.venstre) q.venstre = b;
+            else q.høyre = b;
+        }
+        else  // Tilfelle 3)
+        {
+            Node<T> s = p, r = p.høyre;   // finner neste i inorden
+            while (r.venstre != null)
             {
-                int cmp = comp.compare(verdi,p.verdi);      // sammenligner
-                if (cmp < 0) { q = p; p = p.venstre; }      // går til venstre
-                else if (cmp > 0) { q = p; p = p.høyre; }   // går til høyre
-                else break;    // den søkte verdien ligger i p
-            }
-            if (p == null) return false;   // finner ikke verdi
-
-            if (p.venstre == null || p.høyre == null)  // Tilfelle 1) og 2)
-            {
-                Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
-                if (p == rot) rot = b;
-                else if (p == q.venstre) q.venstre = b;
-                else q.høyre = b;
-            }
-            else  // Tilfelle 3)
-            {
-                Node<T> s = p, r = p.høyre;   // finner neste i inorden
-                while (r.venstre != null)
-                {
-                    s = r;    // s er forelder til r
-                    r = r.venstre;
-                }
-
-                p.verdi = r.verdi;   // kopierer verdien i r til p
-
-                if (s != p) s.venstre = r.høyre;
-                else s.høyre = r.høyre;
+                s = r;    // s er forelder til r
+                r = r.venstre;
             }
 
-            antall--;   // det er nå én node mindre i treet
-            return true;
+            p.verdi = r.verdi;   // kopierer verdien i r til p
+
+            if (s != p) s.venstre = r.høyre;
+            else s.høyre = r.høyre;
+        }
+
+        antall--;   // det er nå én node mindre i treet
+        return true;
     }
 
     public int fjernAlle(T verdi) {
@@ -280,7 +287,7 @@ public class EksamenSBinTre<T> {
 
         ArrayList<T> array = new ArrayList<T>(); // Arrayet som skal returneres
 
-        Queue<Node> ko = new LinkedList<>(); //Køen som brukes for å lagere verdiene midlertidig før vi overfører de til array
+        Deque<Node> ko = new LinkedList<>(); //Køen som brukes for å lagere verdiene midlertidig før vi overfører de til array
 
         ko.add(rot); //Roten skal være første verdien i nivåorden
 
@@ -289,9 +296,9 @@ public class EksamenSBinTre<T> {
             Node<T> tmp = ko.poll(); //her lagerer vi noden som er øverst i køen midlertidig og så fjerner vi det fra køen
 
             array.add(tmp.verdi); //Her legges øverste verdien i array
-            if(tmp.venstre!=null)//I nivåorden skal venstre veriden komme før høyre
-                ko.add(tmp.venstre);
-            if(tmp.høyre!=null)
+            if(tmp.venstre!=null) //I nivåorden skal venstre veriden komme før høyre
+                ko.add(tmp.venstre); //Legger venstre til array
+            if(tmp.høyre!=null)//Hvis tmp.høyre finnes adder vi den til ko
                 ko.add(tmp.høyre);
         }
         return array;

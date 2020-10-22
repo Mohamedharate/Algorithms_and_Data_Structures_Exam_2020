@@ -71,8 +71,7 @@ public class Main {
 
         for (int verdi : a)tre.leggInn(verdi);
 
-        System.out.println(tre.fjern(3));
-        System.out.println(tre.fjern(3));
+        System.out.println(tre.fjern(10));
 
 
         System.out.println(tre.inneholder(3));
