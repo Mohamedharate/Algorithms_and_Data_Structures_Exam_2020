@@ -239,7 +239,6 @@ public class EksamenSBinTre<T> {
     public void nullstill() {
 
 
-
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
