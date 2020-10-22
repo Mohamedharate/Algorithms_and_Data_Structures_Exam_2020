@@ -140,7 +140,30 @@ public class EksamenSBinTre<T> {
         //Noden har to barn
         //Noden finnes ikke i treet, returner false
 
+        if (verdi == null)return false;
 
+        Node<T> p = rot;
+        Node<T> q = null;
+
+
+        while (p!=null){
+            int cmp = comp.compare(verdi, p.verdi);
+            if (cmp < 0) { q = p; p = p.venstre; }      // går til venstre
+            else if (cmp > 0) { q = p; p = p.høyre; }   // går til høyre
+            else break;    // den søkte verdien ligger i p
+        }
+        if (p == null)return false;
+
+        if (p.venstre == null || p.høyre == null){//Kun ettbarn eller ingen barn.
+
+
+
+        }
+
+
+
+
+/*
         if (verdi == null) return false;  // treet har ingen nullverdier
 
         Node<T> p = rot, q = null;   // q skal være forelder til p
@@ -177,7 +200,8 @@ public class EksamenSBinTre<T> {
         }
 
         antall--;   // det er nå én node mindre i treet
-        return true;
+
+ */
     }
 
     public int fjernAlle(T verdi) {
