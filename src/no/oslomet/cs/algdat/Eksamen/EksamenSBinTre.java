@@ -161,12 +161,9 @@ public class EksamenSBinTre<T> {
     }
 
     public int fjernAlle(T verdi) {
-        int ant = antall(verdi);
+        int ant = antall(verdi), teller = 0;
 
-        int teller = 0;
-
-        for (int i = 0; i<ant;i++)
-        {
+        for (int i = 0; i<ant;i++) {
             fjern(verdi);
             teller++;
         }
@@ -278,12 +275,9 @@ public class EksamenSBinTre<T> {
 
         EksamenSBinTre<K> tre = new EksamenSBinTre<>(c);
 
-        for (K d : data) {
+        for (K d : data)
             tre.leggInn(d);
-        }
 
         return tre;
     }
-
-
 } // ObligSBinTre
