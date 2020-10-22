@@ -197,18 +197,16 @@ public class EksamenSBinTre<T> {
 
     public int fjernAlle(T verdi) {
 
-/*
-        for (int i = 0; i<teller;i++)
-        {
-            fjern(verdi);
-        }
 
- */
+
+        int ant = antall(verdi);
         int teller = 0;
-        while (inneholder(verdi)){
+        for (int i = 0; i<ant;i++)
+        {
             fjern(verdi);
             teller++;
         }
+
 
 
         antall = antall-teller;
