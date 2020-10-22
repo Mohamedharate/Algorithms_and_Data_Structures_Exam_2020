@@ -25,6 +25,22 @@ Hvis q er null da vil p blir den nye roten. Antall økes med en for hver gang vi
 
  
 * Oppgave 2: løste jeg ved å først sjekke om treet er tomt, hvis så returnerer jeg 0 siden treet er tomt og ikke har
-noen verdier. Oppretter en variabel "teller" og setter den lik null
+noen verdier. Oppretter en variabel "teller" og setter den lik null. Sjekker om verdi == null, hvis returnerer jeg 0.
+Videre brukte jeg en while-løkke som går gjennom treet og teller blir økt med 1 for hver gang verdi forekommer.
+Her må jeg være ærlig og si at jeg fikk litt inspirasjon av metoden inneholder. Til slutt blir teller returnert.
+
+* Oppgave 3: Denne oppgaven brukte jeg mest tid på. 
+
+- førstePostorden: 
+
+
+* Oppgave 4: 
+
+* Oppgave 5: 
+
+* Oppgave 6: 
+
+
+
 
 Løste ved å implementere ...
