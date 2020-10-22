@@ -62,9 +62,13 @@ hvis ja legger vi også verdien i køen. Til slutt returnerer jeg arrayet.
 av foreach og leggInn()-metoden.
 
 * Oppgave 6:
-- 
+- I metoden fjen() kopierte jeg koden fra kompandiet, men endret referansene til forelder og passet på at kode
+ikke gir nullpointer.. 
 
+- fjenAlle() her brukte jeg metodene antall(T verdi) og fjen(). kjørte en for-løkke som skulle kjøre fjern 
+så mange ganger som den er i treet. 
+Til slutt returnerer jeg antall og trekker antall noder fjernet fra antall.
 
+- nullstille() løste jeg med bruk av serialize() og fjenAlle(). Brukte en foreach-løkke som gikk gjennom alle 
+verdiene i serialize og fjernet de ved bruk av fjerAlle(). Antall settes til 0.
 
-
-Løste ved å implementere ...

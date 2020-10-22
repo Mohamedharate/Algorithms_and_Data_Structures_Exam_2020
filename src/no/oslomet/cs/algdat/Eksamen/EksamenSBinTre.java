@@ -196,22 +196,18 @@ public class EksamenSBinTre<T> {
     }
 
     public int fjernAlle(T verdi) {
-
-
-
         int ant = antall(verdi);
+
         int teller = 0;
+
         for (int i = 0; i<ant;i++)
         {
             fjern(verdi);
             teller++;
         }
 
-
-
         antall = antall-teller;
         return teller;
-
     }
 
     public int antall(T verdi) {
@@ -240,16 +236,11 @@ public class EksamenSBinTre<T> {
 
     public void nullstill() {
 
-
-        ArrayList<T> tre = serialize();
-
-        for (T r : tre){
+        for (T r : serialize()){
             fjernAlle(r);
         }
 
-
         antall = 0;
-        endringer = 0;
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
