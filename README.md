@@ -31,8 +31,12 @@ Her må jeg være ærlig og si at jeg fikk litt inspirasjon av metoden inneholde
 
 * Oppgave 3: Denne oppgaven brukte jeg mest tid på. 
 
-- førstePostorden: 
+- førstePostorden: denne løste jeg ved å bruke while-løkke som kjører så lenge p ikke er lik null.
+inn i while sjekker jeg hvis p.venstre ikke er like så oppdaterer jeg p til p.venstre. Hvis det er ikke lenger mulig 
+å gå til venstre sjekker jeg om det er mulig å gå til høyre. til slutt når det er verken mulig å gå til venstre eller 
+høyre returnerer jeg p. 
 
+- nestePostorden: 
 
 * Oppgave 4: 
 

@@ -254,36 +254,13 @@ public class EksamenSBinTre<T> {
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
 
-        //Hvis p har ingen barn, return p
-        if (p.venstre == null && p.høyre == null){
-            return p;
+        while (p!=null){
+            if (p.venstre != null)p = p.venstre;
+            else if (p.høyre != null)p=p.høyre;
+            else return p;
         }
-        Node<T> current = p;
+        return null;
 
-        //Hvis p har venstre barn
-
-        if (p.venstre != null) {
-            while (current.venstre != null) {
-                current = current.venstre;
-            }
-        }
-        if (current.høyre != null) {
-            current = current.høyre;
-            if (current.venstre != null){
-                while (current.venstre != null) {
-                    current = current.venstre;
-                }
-            }
-            else{
-                while (current.høyre != null){
-                    current = current.høyre;
-                }
-                return current;
-            }
-        }
-        //Hvis p har kun høyre barn
-
-        return current;
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
@@ -326,7 +303,7 @@ public class EksamenSBinTre<T> {
 
     public ArrayList<T> serialize() {
 
-        ArrayList<T> array = new ArrayList<T>(); // Arrayet som skal returneres
+        ArrayList<T> array = new ArrayList<>(); // Arrayet som skal returneres
 
         Deque<Node> ko = new LinkedList<>(); //Køen som brukes for å lagere verdiene midlertidig før vi overfører de til array
 
