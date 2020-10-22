@@ -160,6 +160,8 @@ public class EksamenSBinTre<T> {
             Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
             if (p == rot) {
                 rot = b;
+                if (b != null)
+                    b.forelder = null;
             }
             else if (p == q.venstre) {
                 q.venstre = b;
@@ -183,8 +185,10 @@ public class EksamenSBinTre<T> {
 
             p.verdi = r.verdi;   // kopierer verdien i r til p
 
-            if (s != p) s.venstre = r.høyre;
+            if (s != p)
+                s.venstre = r.høyre;
             else s.høyre = r.høyre;
+
         }
 
         antall--;   // det er nå én node mindre i treet
