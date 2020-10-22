@@ -155,6 +155,17 @@ public class EksamenSBinTre<T> {
         if (p == null)return false;
 
         if (p.venstre == null || p.høyre == null){//Kun ettbarn eller ingen barn.
+            if (p.venstre == null && p.høyre == null){
+                if (q.høyre == p){
+                    q.høyre = null;
+                }
+                else{
+                    q.venstre = null;
+
+                }
+
+
+            }
 
 
 
