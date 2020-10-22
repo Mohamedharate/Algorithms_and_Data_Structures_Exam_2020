@@ -36,11 +36,23 @@ inn i while sjekker jeg hvis p.venstre ikke er like så oppdaterer jeg p til p.v
 å gå til venstre sjekker jeg om det er mulig å gå til høyre. til slutt når det er verken mulig å gå til venstre eller 
 høyre returnerer jeg p. 
 
-- nestePostorden: 
+- nestePostorden: Her sjekker jeg om p.forelder er lik null, hvis ja returner jeg null siden rot er den siste i
+postorden. Videre sjekker jeg om p er høyre eller venstre barn. Hvis p er et høyre barn, skal p.forelder være neste 
+verdi i postorden. Sjekker om p har høyre søsken, hvis ja kjører jeg førstePostorden(p.forelder.høyre) for å finne første noden.
+Hvis ikke returner jeg p.forelder siden den er neste i postorden.
 
 * Oppgave 4: 
+- Metoden postorden løste jeg ved først å finne første verdien i postorden ved å bruke metoden førstePostorden() og 
+lagret verdien i en variabel p. Deretter brukte jeg en while-løkke som kjører så lenge p ikke er lik null. 
+Før jeg gikk til neste i postorden utførte jeg oppgaven "oppgave.utførOppgave(p.verdi)" så finner jeg neste i postorden
+ved bruk av metoden nestePostorden(p).
 
-* Oppgave 5: 
+- Metoden postordenRecursive() gjorde samme som postorden, men bare recursive :). Går til venstre så lenge det lar seg 
+gjøre så gå til høyre hvis mulig og så utfør oppgaven.
+
+* Oppgave 5:
+
+
 
 * Oppgave 6: 
 
