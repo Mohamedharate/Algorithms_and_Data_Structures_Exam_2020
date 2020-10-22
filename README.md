@@ -29,7 +29,7 @@ noen verdier. Oppretter en variabel "teller" og setter den lik null. Sjekker om 
 Videre brukte jeg en while-løkke som går gjennom treet og teller blir økt med 1 for hver gang verdi forekommer.
 Her må jeg være ærlig og si at jeg fikk litt inspirasjon av metoden inneholder. Til slutt blir teller returnert.
 
-* Oppgave 3: Denne oppgaven brukte jeg mest tid på. 
+* Oppgave 3: Denne oppgaven brukte jeg mest tid på.
 
 - førstePostorden: denne løste jeg ved å bruke while-løkke som kjører så lenge p ikke er lik null.
 inn i while sjekker jeg hvis p.venstre ikke er like så oppdaterer jeg p til p.venstre. Hvis det er ikke lenger mulig 

@@ -105,31 +105,6 @@ public class EksamenSBinTre<T> {
         antall++;                                // én verdi mer i treet
         return true;
 
-        /*
-
-        Objects.requireNonNull(verdi,"Ulovlig med nullverdier");
-
-        Node<T> p = rot, q = null;
-        int cmp = 0;
-
-        while (p != null){
-            q = p;
-            cmp = comp.compare(verdi,p.verdi);
-            p = cmp < 0 ? p.venstre : p.høyre;
-        }
-
-        if (q==null)rot = new Node<>(verdi,q);
-        else if(cmp < 0) {
-            p = new Node<>(verdi, q);
-            q.venstre = p;
-        }
-        else q.høyre = p;
-
-        antall++;
-
-        return true;
-
-         */
     }
 
     public boolean fjern(T verdi) {
