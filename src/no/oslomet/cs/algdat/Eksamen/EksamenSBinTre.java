@@ -140,41 +140,8 @@ public class EksamenSBinTre<T> {
         //Noden har to barn
         //Noden finnes ikke i treet, returner false
 
-        if (verdi == null)return false;
+      //Kun ettbarn eller ingen barn.
 
-        Node<T> p = rot;
-        Node<T> q = null;
-
-
-        while (p!=null){
-            int cmp = comp.compare(verdi, p.verdi);
-            if (cmp < 0) { q = p; p = p.venstre; }      // går til venstre
-            else if (cmp > 0) { q = p; p = p.høyre; }   // går til høyre
-            else break;    // den søkte verdien ligger i p
-        }
-        if (p == null)return false;
-
-        if (p.venstre == null || p.høyre == null){//Kun ettbarn eller ingen barn.
-            if (p.venstre == null && p.høyre == null){
-                if (q.høyre == p){
-                    q.høyre = null;
-                }
-                else{
-                    q.venstre = null;
-
-                }
-
-
-            }
-
-
-
-        }
-
-
-
-
-/*
         if (verdi == null) return false;  // treet har ingen nullverdier
 
         Node<T> p = rot, q = null;   // q skal være forelder til p
@@ -191,9 +158,19 @@ public class EksamenSBinTre<T> {
         if (p.venstre == null || p.høyre == null)  // Tilfelle 1) og 2)
         {
             Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
-            if (p == rot) rot = b;
-            else if (p == q.venstre) q.venstre = b;
-            else q.høyre = b;
+            if (p == rot) {
+                rot = b;
+            }
+            else if (p == q.venstre) {
+                q.venstre = b;
+                if (b != null)
+                    b.forelder = q;
+            }
+            else{
+                q.høyre = b;
+                if (b != null)
+                    b.forelder = q;
+            }
         }
         else  // Tilfelle 3)
         {
@@ -211,12 +188,28 @@ public class EksamenSBinTre<T> {
         }
 
         antall--;   // det er nå én node mindre i treet
-
- */
+        return true;
     }
 
     public int fjernAlle(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+/*
+        for (int i = 0; i<teller;i++)
+        {
+            fjern(verdi);
+        }
+
+ */
+        int teller = 0;
+        while (inneholder(verdi)){
+            fjern(verdi);
+            teller++;
+        }
+
+
+        antall= antall-teller;
+        return teller;
+
     }
 
     public int antall(T verdi) {
@@ -244,6 +237,9 @@ public class EksamenSBinTre<T> {
     }
 
     public void nullstill() {
+
+
+
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {

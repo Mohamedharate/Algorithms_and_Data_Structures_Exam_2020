@@ -64,17 +64,15 @@ public class Main {
 
 
 
-        int[] a = {10, 6, 14, 1, 8, 12, 3, 7, 9, 11, 13, 2,3, 5, 4};
+        int[] b = {1, 4, 1, 3, 1, 2, 1, 1};
 
 
         EksamenSBinTre<Integer> tre = new EksamenSBinTre<>(Comparator.naturalOrder());
 
-        for (int verdi : a)tre.leggInn(verdi);
-
-        System.out.println(tre.fjern(10));
+        for (int verdi : b)tre.leggInn(verdi);
 
 
-        System.out.println(tre.inneholder(3));
+        System.out.println(tre.inneholder(10));
 
 
 
