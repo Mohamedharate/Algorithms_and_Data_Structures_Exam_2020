@@ -207,7 +207,7 @@ public class EksamenSBinTre<T> {
         }
 
 
-        antall= antall-teller;
+        antall = antall-teller;
         return teller;
 
     }
@@ -239,6 +239,15 @@ public class EksamenSBinTre<T> {
     public void nullstill() {
 
 
+        ArrayList<T> tre = serialize();
+
+        for (T r : tre){
+            fjernAlle(r);
+        }
+
+
+        antall = 0;
+        endringer = 0;
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
@@ -319,7 +328,7 @@ public class EksamenSBinTre<T> {
 
         Deque<Node> ko = new LinkedList<>(); //Køen som brukes for å lagere verdiene midlertidig før vi overfører de til array
 
-        ko.add(rot); //Roten skal være første verdien i nivåorden
+        if (rot != null)ko.add(rot); //Roten skal være første verdien i nivåorden
 
         while(!ko.isEmpty()) {//sjekker om kø er tom, hvis ja returnerer vi array
 
