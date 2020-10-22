@@ -52,7 +52,7 @@ gjøre så gå til høyre hvis mulig og så utfør oppgaven.
 
 * Oppgave 5:
 - Metoden serialize løste jeg ved å bruke hjelpetabell Deque. Sjekker først at rot ikke er lik null, 
-hvis ja legger jeg til køen. Så bruker jeg en while-løkke som kjører så lenge kø er ikke tom. Oppretter en hjelpervariabel
+hvis ja legger jeg til køen. Så bruker jeg en while-løkke som kjører så lenge kø ikke er tom. Oppretter en hjelpervariabel
 som lagerer innholdet som er øverst i køen.(rot skal komme først i nivåorden, hvis den har venstre barn kommer de etter 
 , hvis ikke sjekker om den har høyre barn) Legger verdien i et arraylist som skal returneres. Videre sjekker jeg at
 tmp.venstre ikke er lik null, hvis ja legger vi verdien til i køen. Og så sjekker vi om høyre er heller ikke lik null
@@ -63,7 +63,7 @@ av foreach og leggInn()-metoden.
 
 * Oppgave 6:
 - I metoden fjen() kopierte jeg koden fra kompandiet, men endret referansene til forelder og passet på at kode
-ikke gir nullpointer.. 
+ikke gir nullpointer.. Det første koden gjør er at 
 
 - fjenAlle() her brukte jeg metodene antall(T verdi) og fjen(). kjørte en for-løkke som skulle kjøre fjern 
 så mange ganger som den er i treet. 

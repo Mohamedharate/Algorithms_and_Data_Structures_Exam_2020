@@ -371,7 +371,6 @@ public class EksamenTest {
         }
 
         s = tre.toStringPostOrder();
-        System.out.println(tre.toStringPostOrder());
         if (!s.equals("[2, 3, 4]")) {
             antallFeil++;
             System.out.println("Oppgave 6u: Feil i fjernAlle(T)!");

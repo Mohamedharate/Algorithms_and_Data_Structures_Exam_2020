@@ -176,34 +176,30 @@ public class EksamenSBinTre<T> {
     }
 
     public int antall(T verdi) {
-        if (tom())
-            return 0;
-
         int teller = 0;
-        if (verdi == null) return teller;
 
+        if (tom() || verdi == null) return teller;
 
-        Node<T> current = rot;
+        Node<T> p = rot;
 
-        while (current != null) {
-            int cmp = comp.compare(verdi, current.verdi);
+        while (p != null) {
+            int cmp = comp.compare(verdi, p.verdi);
             if (cmp==0){
                 teller++;
-                current = current.høyre;
+                p = p.høyre;
             }
-            else if (cmp < 0){
-                current = current.venstre;
-            }
-            else  current = current.høyre;
+            else if (cmp < 0)
+                p = p.venstre;
+
+            else  p = p.høyre;
         }
         return teller;
     }
 
     public void nullstill() {
 
-        for (T r : serialize()){
+        for (T r : serialize())
             fjernAlle(r);
-        }
 
         antall = 0;
     }
