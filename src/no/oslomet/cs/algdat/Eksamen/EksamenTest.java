@@ -365,13 +365,13 @@ public class EksamenTest {
 
         int[] b = {1, 4, 1, 3, 1, 2, 1, 1};
         for (int verdi : b) tre.leggInn(verdi);
-
         if (tre.fjernAlle(1) != 5) {
             antallFeil++;
             System.out.println("Oppgave 6t: Feil i fjernAlle(T)!");
         }
 
         s = tre.toStringPostOrder();
+        System.out.println(tre.toStringPostOrder());
         if (!s.equals("[2, 3, 4]")) {
             antallFeil++;
             System.out.println("Oppgave 6u: Feil i fjernAlle(T)!");
