@@ -73,8 +73,6 @@ Tilfellene er at noden som skal fjernes har:
         3) to barn
 
        
- 
-
 - fjenAlle() her brukte jeg metodene antall(T verdi) og fjen(). kjørte en for-løkke som skulle kjøre fjern 
 så mange ganger som den er i treet. 
 Til slutt returnerer jeg antall og trekker antall noder fjernet fra antall.
