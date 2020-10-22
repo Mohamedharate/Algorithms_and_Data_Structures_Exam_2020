@@ -51,10 +51,18 @@ ved bruk av metoden nestePostorden(p).
 gjøre så gå til høyre hvis mulig og så utfør oppgaven.
 
 * Oppgave 5:
+- Metoden serialize løste jeg ved å bruke hjelpetabell Deque. Sjekker først at rot ikke er lik null, 
+hvis ja legger jeg til køen. Så bruker jeg en while-løkke som kjører så lenge kø er ikke tom. Oppretter en hjelpervariabel
+som lagerer innholdet som er øverst i køen.(rot skal komme først i nivåorden, hvis den har venstre barn kommer de etter 
+, hvis ikke sjekker om den har høyre barn) Legger verdien i et arraylist som skal returneres. Videre sjekker jeg at
+tmp.venstre ikke er lik null, hvis ja legger vi verdien til i køen. Og så sjekker vi om høyre er heller ikke lik null
+hvis ja legger vi også verdien i køen. Til slutt returnerer jeg arrayet.
+ 
+- Metoden deserialize denne løste jeg ved å opprette et tre. Og så legge til verdiene fra serialize ved bruk
+av foreach og leggInn()-metoden.
 
-
-
-* Oppgave 6: 
+* Oppgave 6:
+- 
 
 
 
